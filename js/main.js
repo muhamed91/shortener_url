@@ -184,8 +184,7 @@ submitButton.addEventListener('submit', function(e){
     } else {
         postLink(inputField.value);
         inputField.value = ''
-        inputField.style.border = '3px solid red';
-        shortenBtn.style.backgroundColor = 'red';
+        
 
     }
     
