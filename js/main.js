@@ -4,8 +4,7 @@ var submitButton = document.querySelector('#myForm');
 var shortenBtn = document.querySelector('.btn-submit');
 var inputField = document.querySelector('.input-field');
 var mainContainer = document.getElementById("myData");
-const textAnchor = document.querySelectorAll('.shorten-link');
-const btnAnchor = document.querySelectorAll('.shorten-link_btn');
+
 
 
 
@@ -115,7 +114,7 @@ function buildElement(url, shortUrl) {
     shortenLinkAnchor.setAttribute('class', 'shorten-link');
     shortenLinkAnchor.setAttribute('href', shortUrl);
     shortLink.appendChild(shortenLinkAnchor);
-    shortenLinkAnchor.innerText = 'https://rel.ink/' + shortUrl;
+    shortenLinkAnchor.innerText = shortUrl;
 
     // Buton
     var btn = document.createElement('button');
@@ -124,7 +123,8 @@ function buildElement(url, shortUrl) {
     shortLink.appendChild(btn);
 
 
-
+    const textAnchor = document.querySelectorAll('.shorten-link');
+    const btnAnchor = document.querySelectorAll('.shorten-link_btn');
 
     // Remove first
 
@@ -152,6 +152,51 @@ function buildElement(url, shortUrl) {
 
 // GetLinks from Localstorage
 
+submitButton.addEventListener('submit', function(e){
+    e.preventDefault();
+    let input = inputField.value
+    input.trim();
+
+    if(input === '') {
+        inputField.style.border = '3px solid red';
+        shortenBtn.style.backgroundColor = 'red';
+
+        setTimeout(function(){
+            shortenBtn.style.backgroundColor = '';
+            inputField.style.border = '';
+            inputField.value = ''
+        },3000)
+    } else if(!isHttpComp(input)) {
+        inputField.style.border = '3px solid red';
+        shortenBtn.style.backgroundColor = 'red';
+        inputField.placeholder = 'Write Correct address: http://';
+        inputField.value = '';
+        
+        setTimeout(function(){
+            
+            inputField.style.border = '';
+            shortenBtn.style.backgroundColor = '';
+            inputField.placeholder = 'Shorten a link here...';
+            inputField.value = '';
+
+        },3000)
+
+    } else {
+        postLink(inputField.value);
+        inputField.value = ''
+        inputField.style.border = '3px solid red';
+        shortenBtn.style.backgroundColor = 'red';
+
+    }
+    
+    
+})
+
+function isHttpComp(input) {
+    let re = new RegExp('^https?://');
+    return re.test(String(input).toLowerCase());
+}
+
 function getLinks() {
 
     let url;
@@ -162,36 +207,14 @@ function getLinks() {
     }
 
    url.forEach(function(urls) {
-       buildElement(urls.url, urls.hashid)
+       let link = 'https://rel.ink/' + urls.hashid;
+       buildElement(urls.url, link)
       
    })
 
    
 }
 getLinks();
-
-
-
-
-submitButton.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(inputField.value === '' || typeof(undefined)) {
-        inputField.style.border = '3px solid red';
-        shortenBtn.style.backgroundColor = 'red';
-
-        setTimeout(function(){
-            shortenBtn.style.backgroundColor = '';
-            inputField.style.border = '';
-            inputField.value = ''
-        },3000)
-    } else {
-        postLink(inputField.value);
-        inputField.value = ''
-    }
-    
-    
-})
-
 
 
 

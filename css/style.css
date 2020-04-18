@@ -184,6 +184,12 @@ header {
   margin: -70px auto 25px auto;
 }
 
+@media screen and (max-width: 480px) {
+  #myData {
+    margin: -70px 15px 25px 15px;
+  }
+}
+
 .list-items {
   display: -webkit-box;
   display: -ms-flexbox;

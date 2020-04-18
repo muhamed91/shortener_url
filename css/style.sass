@@ -122,6 +122,9 @@ header
 #myData
         max-width: 950px
         margin: -70px auto 25px auto
+        +mobile
+            margin: -70px 15px 25px 15px
+
         
 
 .list-items
@@ -154,7 +157,8 @@ header
 
     a
         color: $cyan
-        padding-bottom: 5px
+        +mobile
+            padding-bottom: 5px
 
 .shorten-link_btn
     width: 90px
