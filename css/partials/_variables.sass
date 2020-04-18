@@ -1,0 +1,41 @@
+// Primary
+
+$cyan: 	    #2acfcf
+$darkViolett:   #3b3054
+
+
+
+// Secondary
+
+$red: #f46262
+
+
+// Neutral
+$lightGrey: #f0f1f6
+$grey:  #7a7a7a
+$greyViolett:   #9e9aa7
+$VeryDarkBlue:  #35323e 
+$VeryDarkViolett:   #232127
+
+
+// Mixi
+
+$mobile: 480px
+$tablet: 768px
+$desktop: "(min-width: 1024px)"
+
+
+=tablet()
+    @media screen and ( max-width:$tablet )
+        @content
+
+
+=mobile()
+    @media screen and ( max-width:$mobile  )
+        @content
+        
+=random($value)
+    @media screen and ( max-width: $value )
+        @content
+             
+    
