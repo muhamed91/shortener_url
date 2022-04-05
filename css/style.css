@@ -149,6 +149,8 @@ header {
   color: #232127;
   font-size: 25px;
   position: absolute;
+  right: 15px;
+  top: 20px;
 }
 
 .mobile-nav_panel {
@@ -248,7 +250,12 @@ header {
 
 .list-shorten a {
   color: #2acfcf;
-  padding-bottom: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .list-shorten a {
+    padding-bottom: 5px;
+  }
 }
 
 .shorten-link_btn {
@@ -506,6 +513,7 @@ main {
   background-color: #2acfcf;
   color: white;
   font-weight: 700;
+  margin-left: 5px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -523,6 +531,36 @@ main {
 }
 
 .shortener_wrapper .btn-submit:hover {
+  background-color: #9be3e2;
+}
+
+.shortener_wrapper .btn-danger {
+  width: 10%;
+  height: 50px;
+  border-radius: 9px;
+  border: none;
+  background-color: darkred;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .shortener_wrapper .btn-danger {
+    width: 30%;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .shortener_wrapper .btn-danger {
+    width: 100%;
+  }
+}
+
+.shortener_wrapper .btn-danger:hover {
   background-color: #9be3e2;
 }
 
